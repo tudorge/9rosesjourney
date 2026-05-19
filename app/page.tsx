@@ -39,6 +39,29 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="guide-section" aria-label="Astrology guidance by Larisa">
+        <div className="guide-portrait-frame">
+          <Image
+            src="/images/larisa.jpg"
+            alt="Larisa, astrology guide for 9 Roses Journey"
+            width={320}
+            height={430}
+            className="guide-portrait"
+          />
+        </div>
+
+        <div className="guide-section-content">
+          <p className="eyebrow">Guided by Larisa</p>
+
+          <h2>Personal astrology guidance for reflection, timing, and clarity.</h2>
+
+          <p>
+            Astrology readings to help you reflect on where you are, understand
+            the timing around you, and move forward with greater clarity.
+          </p>
+        </div>
+      </section>
+
       <section className="intro-grid" aria-label="Site features">
         <article className="intro-card">
           <h2>Astrology Readings</h2>
