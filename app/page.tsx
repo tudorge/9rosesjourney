@@ -1,27 +1,41 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="site-main home-page">
       <section className="hero-section">
-        <p className="eyebrow">Astrology • Reflection • Personal Guidance</p>
+        <div className="hero-content">
+          <p className="eyebrow">Astrology • Reflection • Personal Guidance</p>
 
-        <h1>Find meaning in the patterns guiding your journey.</h1>
+          <h1>Find meaning in the patterns guiding your journey.</h1>
 
-        <p className="hero-copy">
-          9 Roses Journey is a home for astrology readings, spiritual insight,
-          and thoughtful guidance for people seeking clarity, timing, and deeper
-          self-understanding.
-        </p>
+          <p className="hero-copy">
+            9 Roses Journey is a home for astrology readings, spiritual insight,
+            and thoughtful guidance for people seeking clarity, timing, and
+            deeper self-understanding.
+          </p>
 
-        <div className="hero-actions">
-          <Link href="/readings" className="primary-button">
-            Explore Readings
-          </Link>
+          <div className="hero-actions">
+            <Link href="/readings" className="primary-button">
+              Explore Readings
+            </Link>
 
-          <Link href="/join" className="secondary-button">
-            Join the List
-          </Link>
+            <Link href="/join" className="secondary-button">
+              Join the List
+            </Link>
+          </div>
+        </div>
+
+        <div className="hero-art" aria-hidden="true">
+          <Image
+            src="/branding/cosmic-roses-hero.png"
+            alt=""
+            width={720}
+            height={720}
+            priority
+            className="hero-art-image"
+          />
         </div>
       </section>
 

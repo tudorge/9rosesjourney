@@ -39,9 +39,9 @@ export default function RootLayout({
 
             <nav className="site-nav" aria-label="Main navigation">
               <Link href="/">Home</Link>
-              <Link href="/about">About</Link>
               <Link href="/readings">Readings</Link>
-              <Link href="/join">Join</Link>
+              <Link href="/about">About</Link>
+              <Link href="/join">Join the List</Link>
             </nav>
           </header>
 
