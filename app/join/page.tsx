@@ -1,4 +1,5 @@
 import Link from "next/link";
+import JoinForm from "./JoinForm";
 
 export default function JoinPage() {
   return (
@@ -56,15 +57,11 @@ export default function JoinPage() {
 
       <section className="content-panel">
         <div>
-          <p className="eyebrow">Coming Soon</p>
-          <h2>The signup form will be connected next.</h2>
+          <p className="eyebrow">Stay Connected</p>
+          <h2>Join the list for future updates.</h2>
         </div>
 
-        <p>
-          This page is ready for the public presentation layer. The next
-          functional step will be connecting an email list provider or simple
-          signup form so visitors can actually join the list.
-        </p>
+        <JoinForm />
       </section>
     </main>
   );
