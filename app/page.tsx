@@ -11,14 +11,13 @@ export default function Home() {
           <h1>Find meaning in the patterns guiding your journey.</h1>
 
           <p className="hero-copy">
-            9 Roses Journey is a home for astrology readings, spiritual insight,
-            and thoughtful guidance for people seeking clarity, timing, and
-            deeper self-understanding.
+            9 Roses Journey offers personal astrology readings for people
+            seeking clarity, timing, and deeper self-understanding.
           </p>
 
           <div className="hero-actions">
             <Link href="/readings" className="primary-button">
-              Explore Readings
+              Schedule a Reading
             </Link>
 
             <Link href="/join" className="secondary-button">
@@ -66,24 +65,24 @@ export default function Home() {
         <article className="intro-card">
           <h2>Astrology Readings</h2>
           <p>
-            Personal readings will be available here soon, including options for
-            natal chart insight, relationship themes, timing, and life direction.
+            A personal session focused on your birth chart, current timing, life
+            themes, questions, and the patterns shaping your journey.
           </p>
         </article>
 
         <article className="intro-card">
-          <h2>Book a Session</h2>
+          <h2>Schedule a Session</h2>
           <p>
-            Scheduling will be added later so visitors can choose available times
-            for live or personalized readings.
+            Booking will open soon through a secure scheduling and payment flow,
+            with readings paid ahead of time when the appointment is scheduled.
           </p>
         </article>
 
         <article className="intro-card">
-          <h2>Reflections & Releases</h2>
+          <h2>Reflections & Updates</h2>
           <p>
-            Future content can be prepared ahead of time and released on a
-            programmed schedule for moon phases, transits, and special dates.
+            Join the list for astrology reflections, moon phase notes, future
+            reading announcements, and seasonal guidance.
           </p>
         </article>
       </section>
