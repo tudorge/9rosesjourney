@@ -11,13 +11,13 @@ export default function Home() {
           <h1>Find meaning in the patterns guiding your journey.</h1>
 
           <p className="hero-copy">
-            9 Roses Journey offers personal astrology readings for people
+            9rosesjourney offers personal astrology readings for people
             seeking clarity, timing, and deeper self-understanding.
           </p>
 
           <div className="hero-actions">
             <Link href="/readings" className="primary-button">
-              Schedule a Reading
+              Work with me
             </Link>
 
             <Link href="/join" className="secondary-button">
@@ -71,7 +71,7 @@ export default function Home() {
         </article>
 
         <article className="intro-card">
-          <h2>Schedule a Session</h2>
+          <h2>Work with me</h2>
           <p>
             Booking will open soon through a secure scheduling and payment flow,
             with readings paid ahead of time when the appointment is scheduled.
