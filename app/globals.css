@@ -788,6 +788,10 @@ a {
     padding: 1.35rem;
   }
 
+  .about-page {
+    padding-top: 0.75rem;
+  }
+
   .about-feature-single {
     padding: 2rem;
   }
