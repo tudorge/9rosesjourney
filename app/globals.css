@@ -526,7 +526,7 @@ a {
 }
 
 .about-page {
-  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-top: 0.75rem;
 }
 
 .about-feature-single {
