@@ -5,15 +5,9 @@ export default function AboutPage() {
     <main className="site-main about-page about-page-wide">
       <section className="about-feature-single" aria-label="About Larisa">
         <div className="about-feature-intro">
-          <p className="eyebrow">About Larisa</p>
 
           <h1>A life shaped by travel, intuition, and the call of the stars.</h1>
 
-          <p>
-            Larisa&apos;s work blends astrology, astrocartography, travel, and
-            lived experience into guidance for people searching for clarity,
-            belonging, and a deeper connection to place.
-          </p>
         </div>
 
         <div className="about-large-image-wrap">
