@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -33,7 +34,14 @@ export default function RootLayout({
         <div className="site-shell">
           <header className="site-header">
             <Link href="/" className="site-logo">
-              <span className="site-logo-mark">✦</span>
+              <Image
+                src="/images/9roses-logo-small.png"
+                alt=""
+                width={40}
+                height={40}
+                priority
+                className="site-logo-image"
+              />
               <span>9 Roses Journey</span>
             </Link>
 

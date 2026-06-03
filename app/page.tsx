@@ -28,7 +28,7 @@ export default function Home() {
 
         <div className="hero-art" aria-hidden="true">
           <Image
-            src="/branding/cosmic-roses-hero.png"
+            src="/images/9roses-logo-emblem-v2.png"
             alt=""
             width={720}
             height={720}
