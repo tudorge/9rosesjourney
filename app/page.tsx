@@ -41,7 +41,7 @@ export default function Home() {
       <section className="guide-section" aria-label="Astrology guidance by Larisa">
         <div className="guide-portrait-frame">
           <Image
-            src="/images/larisa.jpg"
+            src="/images/Larisa portret2.png"
             alt="Larisa, astrology guide for 9 Roses Journey"
             width={320}
             height={430}
