@@ -59,6 +59,16 @@ export default function Home() {
             the timing around you, and move forward with greater clarity.
           </p>
         </div>
+
+        <div className="guide-certification-frame">
+          <Image
+            src="/images/relocation-astrologer-certification.jpg"
+            alt="Certified Relocation Astrologer certification badge"
+            width={260}
+            height={260}
+            className="guide-certification"
+          />
+        </div>
       </section>
 
       <section className="intro-grid" aria-label="Site features">
