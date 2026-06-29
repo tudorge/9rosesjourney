@@ -15,9 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "9 Roses Journey",
+  title: {
+    default: "9 Roses Journey",
+    template: "%s | 9 Roses Journey",
+  },
   description:
-    "Astrology readings, personal reflection, and guidance for your journey.",
+    "Astrology guidance, birth chart readings, astrocartography, and relocation astrology with Larisa.",
 };
 
 export default function RootLayout({
@@ -48,6 +51,7 @@ export default function RootLayout({
             <nav className="site-nav" aria-label="Main navigation">
               <Link href="/">Home</Link>
               <Link href="/readings">Readings</Link>
+              <Link href="/astrocartography">Astrocartography</Link>
               <Link href="/about">About</Link>
               <Link href="/join">Join the List</Link>
             </nav>

@@ -1,27 +1,38 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Astrology Guidance, Birth Chart Readings & Relocation Astrology",
+  description:
+    "Private astrology guidance with Larisa, including birth chart readings, astrocartography, and relocation astrology for clarity, timing, travel, moving, and life direction.",
+};
 
 export default function Home() {
   return (
     <main className="site-main home-page">
       <section className="hero-section">
         <div className="hero-content">
-          <p className="eyebrow">Astrology • Reflection • Personal Guidance</p>
+          <p className="eyebrow">
+            Astrology • Birth Chart Readings • Relocation Astrology
+          </p>
 
           <h1>Find meaning in the patterns guiding your journey.</h1>
 
           <p className="hero-copy">
-            9rosesjourney offers personal astrology readings for people
-            seeking clarity, timing, and deeper self-understanding.
+            9 Roses Journey offers personal astrology guidance with Larisa,
+            including birth chart readings, timing insight, and relocation
+            astrology for people seeking clarity, direction, and deeper
+            self-understanding.
           </p>
 
           <div className="hero-actions">
             <Link href="/readings" className="primary-button">
-              Work with me
+              Schedule a Reading
             </Link>
 
-            <Link href="/join" className="secondary-button">
-              Join the List
+            <Link href="/astrocartography" className="secondary-button">
+              Explore Astrocartography
             </Link>
           </div>
         </div>
@@ -42,7 +53,7 @@ export default function Home() {
         <div className="guide-portrait-frame">
           <Image
             src="/images/Larisa portret2.png"
-            alt="Larisa, astrology guide for 9 Roses Journey"
+            alt="Larisa, astrology guide for birth chart and relocation astrology readings"
             width={320}
             height={430}
             className="guide-portrait"
@@ -56,7 +67,10 @@ export default function Home() {
 
           <p>
             Astrology readings to help you reflect on where you are, understand
-            the timing around you, and move forward with greater clarity.
+            the timing around you, and move forward with greater clarity. Larisa
+            also offers relocation astrology and astrocartography insight for
+            questions about travel, moving, belonging, career direction, and
+            places that may support your next chapter.
           </p>
         </div>
 
@@ -71,6 +85,31 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="content-panel">
+        <div>
+          <p className="eyebrow">Astrocartography & Relocation Astrology</p>
+          <h2>Explore how your birth chart connects with place.</h2>
+        </div>
+
+        <p>
+          Astrocartography, also called locational astrology or relocation
+          astrology, maps your natal chart across the world. It can help you
+          reflect on where to live, where to travel, where career growth may be
+          supported, and which places may feel more aligned with love,
+          confidence, healing, or feeling at home.
+        </p>
+
+        <div className="hero-actions">
+          <Link href="/astrocartography" className="primary-button">
+            Learn About Astrocartography
+          </Link>
+
+          <Link href="/readings" className="secondary-button">
+            Schedule a Reading
+          </Link>
+        </div>
+      </section>
+
       <section className="intro-grid" aria-label="Site features">
         <article className="intro-card">
           <h2>Astrology Readings</h2>
@@ -81,10 +120,11 @@ export default function Home() {
         </article>
 
         <article className="intro-card">
-          <h2>Work with me</h2>
+          <h2>Relocation Astrology</h2>
           <p>
-            Booking will open soon through a secure scheduling and payment flow,
-            with readings paid ahead of time when the appointment is scheduled.
+            Explore your astrocartography map and relocation chart for insight
+            into moving, travel, career direction, relationships, emotional
+            security, and places that may feel more supportive.
           </p>
         </article>
 
