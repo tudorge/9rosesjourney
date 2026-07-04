@@ -17,7 +17,7 @@ export default function Home() {
             Astrology • Birth Chart Readings • Relocation Astrology
           </p>
 
-          <h1>Welcome home explorer, you are right on time!</h1>
+          <h1>Welcome Home Explorer! You are right on time.</h1>
 
           <p className="hero-copy">
             9 Roses Journey offers personal astrology guidance with Larisa,
