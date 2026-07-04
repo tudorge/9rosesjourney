@@ -27,7 +27,7 @@ export default function Home() {
           </p>
 
           <div className="hero-actions">
-            <Link href="/readings" className="primary-button">
+            <Link href="/schedule" className="primary-button">
               Schedule a Reading
             </Link>
 
@@ -49,7 +49,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="guide-section" aria-label="Astrology guidance by Larisa">
+      <section
+        className="guide-section"
+        aria-label="Astrology guidance by Larisa"
+      >
         <div className="guide-portrait-frame">
           <Image
             src="/images/Larisa portret2.png"
@@ -63,7 +66,9 @@ export default function Home() {
         <div className="guide-section-content">
           <p className="eyebrow">Guided by Larisa</p>
 
-          <h2>Personal astrology guidance for reflection, timing, and clarity.</h2>
+          <h2>
+            Personal astrology guidance for reflection, timing, and clarity.
+          </h2>
 
           <p>
             Astrology readings to help you reflect on where you are, understand
@@ -104,7 +109,7 @@ export default function Home() {
             Learn About Astrocartography
           </Link>
 
-          <Link href="/readings" className="secondary-button">
+          <Link href="/schedule" className="primary-button">
             Schedule a Reading
           </Link>
         </div>
