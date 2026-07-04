@@ -92,11 +92,11 @@ const socialProviders: SocialProviderConfig[] = [
 
 function getSafeNextPath(value: string | null) {
   if (!value) {
-    return "/readings";
+    return "/schedule";
   }
 
   if (!value.startsWith("/") || value.startsWith("//")) {
-    return "/readings";
+    return "/schedule";
   }
 
   return value;
