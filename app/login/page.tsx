@@ -33,7 +33,7 @@ export default function LoginPage() {
       <section className="content-panel">
         <div>
           <p className="eyebrow">Secure Access</p>
-          <h2>Use email, Google, or Facebook.</h2>
+          <h2>Use email or Google.</h2>
         </div>
 
         <Suspense

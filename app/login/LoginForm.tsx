@@ -12,7 +12,7 @@ type SubmitState =
   | "social_redirecting"
   | "error";
 
-type SocialProvider = "google" | "facebook";
+type SocialProvider = "google";
 
 type SocialProviderConfig = {
   provider: SocialProvider;
@@ -82,11 +82,6 @@ const socialProviders: SocialProviderConfig[] = [
     provider: "google",
     label: "Continue with Google",
     icon: <GoogleIcon />,
-  },
-  {
-    provider: "facebook",
-    label: "Continue with Facebook",
-    icon: <FacebookIcon />,
   },
 ];
 
@@ -248,11 +243,29 @@ export default function LoginForm() {
             <span>{item.label}</span>
           </button>
         ))}
+
+        <button
+          className="secondary-button login-provider-button login-provider-coming-soon"
+          type="button"
+          disabled
+          aria-disabled="true"
+          title="Facebook login is coming soon."
+        >
+          <FacebookIcon />
+          <span>Continue with Facebook</span>
+          <span className="coming-soon-pill">Coming soon</span>
+        </button>
       </div>
 
       <p className="form-note">
         Your appointment is not scheduled automatically. After sign-in, you can
         submit your request for Larisa to review.
+      </p>
+
+      <p className="form-note">
+        By continuing, you agree to the{" "}
+        <a href="/terms">Terms of Service</a> and acknowledge the{" "}
+        <a href="/privacy">Privacy Policy</a>.
       </p>
 
       {submitState === "error" && (
