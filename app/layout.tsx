@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
+import { createClient } from "@/lib/supabase/server";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,11 +25,26 @@ export const metadata: Metadata = {
     "Astrology guidance, birth chart readings, astrocartography, and relocation astrology with Larisa.",
 };
 
-export default function RootLayout({
+async function signOut() {
+  "use server";
+
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+
+  redirect("/");
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   return (
     <html
       lang="en"
@@ -54,7 +71,17 @@ export default function RootLayout({
               <Link href="/astrocartography">Astrocartography</Link>
               <Link href="/about">About</Link>
               <Link href="/join">Join</Link>
-              <Link href="/schedule">Schedule a Reading</Link>
+              <Link href="/schedule" className="site-nav-cta">
+                Schedule a Reading
+              </Link>
+
+              {user && (
+                <form action={signOut}>
+                  <button className="site-nav-button" type="submit">
+                    Log out
+                  </button>
+                </form>
+              )}
             </nav>
           </header>
 
