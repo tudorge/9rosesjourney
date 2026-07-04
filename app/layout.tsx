@@ -89,6 +89,12 @@ export default async function RootLayout({
 
           <footer className="site-footer">
             <p>© {new Date().getFullYear()} 9 Roses Journey</p>
+
+            <nav className="footer-links" aria-label="Footer navigation">
+              <Link href="/privacy">Privacy Policy</Link>
+              <Link href="/terms">Terms of Service</Link>
+              <Link href="/data-deletion">Data Deletion</Link>
+            </nav>
           </footer>
         </div>
       </body>
