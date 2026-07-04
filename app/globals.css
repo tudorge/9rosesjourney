@@ -42,19 +42,18 @@ body {
       transparent 26rem
     ),
     radial-gradient(
-    circle at 88% 10%,
-    rgba(244, 217, 163, 0.48),
-    transparent 30rem
-  ),
+      circle at 88% 10%,
+      rgba(244, 217, 163, 0.48),
+      transparent 30rem
+    ),
     radial-gradient(
-    circle at 78% 72%,
-    rgba(168, 63, 97, 0.08),
-    transparent 34rem
-  ),
+      circle at 78% 72%,
+      rgba(168, 63, 97, 0.08),
+      transparent 34rem
+    ),
     linear-gradient(180deg, #fffaf5 0%, var(--background) 48%, #f8eee9 100%);
   color: var(--foreground);
-  font-family:
-    var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 body::before {
@@ -238,15 +237,15 @@ a {
       transparent 14rem
     ),
     radial-gradient(
-    circle at 84% 78%,
-    rgba(168, 63, 97, 0.14),
-    transparent 18rem
-  ),
+      circle at 84% 78%,
+      rgba(168, 63, 97, 0.14),
+      transparent 18rem
+    ),
     linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 248, 241, 0.74)
-  );
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 248, 241, 0.74)
+    );
   box-shadow: var(--shadow);
   backdrop-filter: blur(12px);
 }
@@ -254,10 +253,10 @@ a {
 .hero-section {
   min-height: 560px;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  grid-template-columns: minmax(0, 1.45fr) minmax(240px, 0.55fr);
   align-items: center;
-  gap: clamp(2rem, 5vw, 4rem);
-  padding: clamp(3.25rem, 6vw, 5rem);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  padding: clamp(3.25rem, 5vw, 4.25rem);
 }
 
 .page-hero {
@@ -289,10 +288,10 @@ a {
   background:
     radial-gradient(circle, rgba(201, 154, 77, 0.14), transparent 34%),
     repeating-radial-gradient(
-    circle,
-    transparent 0 2.3rem,
-    rgba(201, 154, 77, 0.15) 2.35rem 2.42rem
-  );
+      circle,
+      transparent 0 2.3rem,
+      rgba(201, 154, 77, 0.15) 2.35rem 2.42rem
+    );
   opacity: 0.74;
   pointer-events: none;
 }
@@ -321,16 +320,16 @@ a {
       transparent 54%
     ),
     radial-gradient(
-    circle at 64% 58%,
-    rgba(201, 154, 77, 0.18),
-    transparent 64%
-  );
+      circle at 64% 58%,
+      rgba(201, 154, 77, 0.18),
+      transparent 64%
+    );
   filter: blur(22px);
 }
 
 .hero-art-image {
   position: relative;
-  width: min(100%, 440px);
+  width: min(100%, 300px);
   height: auto;
   border: 1px solid rgba(201, 154, 77, 0.14);
   border-radius: 1.35rem;
@@ -366,7 +365,7 @@ a {
   margin-bottom: 0.65rem;
 }
 
-.hero-section h1,
+.hero-section h1:not(.home-welcome-title),
 .page-hero h1 {
   position: relative;
   z-index: 1;
@@ -376,6 +375,25 @@ a {
   font-size: clamp(3rem, 6vw, 5.2rem);
   line-height: 0.96;
   letter-spacing: -0.075em;
+}
+
+.home-welcome-title {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0;
+  color: var(--foreground);
+  font-size: clamp(2.55rem, 4.15vw, 3.65rem);
+  line-height: 1.04;
+  letter-spacing: -0.07em;
+}
+
+.home-welcome-title span {
+  display: block;
+}
+
+.home-welcome-line {
+  white-space: nowrap;
 }
 
 .hero-copy {
@@ -548,7 +566,8 @@ a {
   margin-top: 1rem;
 }
 
-.legal-content a {
+.legal-content a,
+.form-note a {
   color: var(--rose-dark);
   font-weight: 800;
   text-decoration: underline;
@@ -859,10 +878,6 @@ a {
   justify-content: center;
   opacity: 0.52;
   filter: grayscale(0.45);
-}
-
-.login-provider-coming-soon .login-provider-icon {
-  position: static;
 }
 
 .coming-soon-pill {
@@ -1319,9 +1334,15 @@ a {
     opacity: 0.45;
   }
 
-  .hero-section h1,
+  .hero-section h1:not(.home-welcome-title),
   .page-hero h1 {
     font-size: clamp(2.75rem, 15vw, 4.15rem);
+  }
+
+  .home-welcome-title {
+    font-size: clamp(1.85rem, 7.8vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.058em;
   }
 
   .hero-copy {
