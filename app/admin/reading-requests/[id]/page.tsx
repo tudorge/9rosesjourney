@@ -65,6 +65,13 @@ type SchedulingAccess = {
   link_generation_count: number;
 };
 
+type ApprovalEmailRequest = {
+  id: string;
+  email: string;
+  name: string;
+  reading_type: string;
+};
+
 function cleanOptionalText(value: FormDataEntryValue | null) {
   if (typeof value !== "string") {
     return null;
@@ -95,6 +102,15 @@ function getSearchParam(
   }
 
   return value;
+}
+
+function escapeHtml(value: string | null | undefined) {
+  return (value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 function formatStatus(status: string) {
@@ -195,6 +211,109 @@ function canApproveRequest(status: string) {
   ].includes(status);
 }
 
+async function sendApprovalEmail(request: ApprovalEmailRequest) {
+  const apiKey = process.env.BREVO_API_KEY;
+
+  if (!apiKey) {
+    console.warn("Skipping approval email: missing BREVO_API_KEY.");
+    return;
+  }
+
+  const senderEmail =
+    process.env.BREVO_SENDER_EMAIL || "larisa@9rosesjourney.com";
+  const senderName = process.env.BREVO_SENDER_NAME || "9 Roses Journey";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://9rosesjourney.com";
+  const scheduleUrl = `${siteUrl}/schedule`;
+
+  const readingTypeLabel = formatReadingType(request.reading_type);
+
+  const htmlContent = `
+    <div style="font-family: Arial, Helvetica, sans-serif; color: #271720; line-height: 1.6;">
+      <h1 style="color: #702840; margin-bottom: 12px;">Your reading request was approved</h1>
+
+      <p>Hello ${escapeHtml(request.name)},</p>
+
+      <p>
+        Larisa has reviewed your request for <strong>${escapeHtml(
+          readingTypeLabel
+        )}</strong>, and scheduling is now open.
+      </p>
+
+      <p>
+        You can choose your appointment time here:
+      </p>
+
+      <p>
+        <a href="${escapeHtml(scheduleUrl)}" style="color: #702840; font-weight: bold;">
+          Schedule your reading
+        </a>
+      </p>
+
+      <p>
+        Please sign in with the same email address you used when submitting your request:
+        <strong>${escapeHtml(request.email)}</strong>.
+      </p>
+
+      <p>
+        With warmth,<br />
+        9 Roses Journey
+      </p>
+    </div>
+  `;
+
+  const textContent = `
+Hello ${request.name},
+
+Larisa has reviewed your request for ${readingTypeLabel}, and scheduling is now open.
+
+Choose your appointment time here:
+${scheduleUrl}
+
+Please sign in with the same email address you used when submitting your request:
+${request.email}
+
+With warmth,
+9 Roses Journey
+  `.trim();
+
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "api-key": apiKey,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      sender: {
+        name: senderName,
+        email: senderEmail,
+      },
+      to: [
+        {
+          email: request.email,
+          name: request.name,
+        },
+      ],
+      replyTo: {
+        email: senderEmail,
+        name: senderName,
+      },
+      subject: "Your 9 Roses Journey reading request was approved",
+      htmlContent,
+      textContent,
+    }),
+  });
+
+  if (!response.ok) {
+    const responseText = await response.text();
+
+    console.error("Approval email error:", {
+      status: response.status,
+      response: responseText,
+    });
+  }
+}
+
 function DetailItem({
   label,
   children,
@@ -281,11 +400,14 @@ async function updateRequestDecision(formData: FormData) {
 
   const { data: request, error: requestLookupError } = await supabase
     .from("reading_requests")
-    .select("id, user_id, status")
+    .select("id, user_id, email, name, reading_type, status")
     .eq("id", requestId)
     .maybeSingle<{
       id: string;
       user_id: string;
+      email: string;
+      name: string;
+      reading_type: string;
       status: string;
     }>();
 
@@ -381,6 +503,13 @@ async function updateRequestDecision(formData: FormData) {
     if (eventError) {
       console.error("Scheduling access event insert error:", eventError);
     }
+
+    await sendApprovalEmail({
+      id: request.id,
+      email: request.email,
+      name: request.name,
+      reading_type: request.reading_type,
+    });
 
     revalidatePath("/admin/reading-requests");
     revalidatePath(detailPath);
@@ -742,7 +871,7 @@ export default async function AdminReadingRequestDetailPage({
             {updated === "approved" && (
               <p className="form-message success-message">
                 Request approved. Scheduling access is now active for this
-                client.
+                client, and the client has been notified by email.
               </p>
             )}
 
