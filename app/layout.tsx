@@ -45,6 +45,18 @@ export default async function RootLayout({
     data: { user },
   } = await supabase.auth.getUser();
 
+  let isAdmin = false;
+
+  if (user) {
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    isAdmin = profile?.role === "admin";
+  }
+
   return (
     <html
       lang="en"
@@ -69,8 +81,17 @@ export default async function RootLayout({
               <Link href="/">Home</Link>
               <Link href="/readings">Readings</Link>
               <Link href="/astrocartography">Astrocartography</Link>
-              <Link href="/about">About</Link>
-              <Link href="/join">Join</Link>
+
+              {isAdmin && (
+                <Link href="/admin/reading-requests">Admin</Link>
+              )}
+
+              {!user && (
+                <Link href="/login?next=/" className="site-nav-login">
+                  Sign In
+                </Link>
+              )}
+
               <Link href="/schedule" className="site-nav-cta">
                 Schedule a Reading
               </Link>
@@ -82,6 +103,15 @@ export default async function RootLayout({
                   </button>
                 </form>
               )}
+
+              <Link
+                href="/about"
+                className="site-nav-help"
+                aria-label="About Larisa"
+                title="About Larisa"
+              >
+                ?
+              </Link>
             </nav>
           </header>
 

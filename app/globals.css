@@ -142,6 +142,52 @@ a {
   background: rgba(255, 255, 255, 0.72);
 }
 
+.site-nav a:focus-visible,
+.site-nav-button:focus-visible,
+.primary-button:focus-visible,
+.secondary-button:focus-visible,
+.slot-button:focus-visible {
+  outline: 3px solid rgba(168, 63, 97, 0.22);
+  outline-offset: 3px;
+}
+
+.site-nav-login {
+  border: 1px solid rgba(201, 154, 77, 0.28);
+  background: rgba(255, 255, 255, 0.42);
+  color: var(--rose-dark);
+}
+
+.site-nav-login:hover {
+  border-color: rgba(168, 63, 97, 0.3);
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.site-nav-help {
+  width: 2.3rem;
+  height: 2.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(201, 154, 77, 0.42);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.56);
+  color: var(--rose-dark);
+  padding: 0;
+  font-size: 0.92rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: center;
+  box-shadow: 0 10px 22px rgba(87, 47, 61, 0.06);
+}
+
+.site-nav-help:hover {
+  border-color: rgba(168, 63, 97, 0.32);
+  background: white;
+  transform: translateY(-1px);
+}
+
 .site-nav-cta {
   border: 1px solid rgba(201, 154, 77, 0.46);
   background: rgba(255, 255, 255, 0.72);
@@ -175,12 +221,14 @@ a {
     color 160ms ease,
     background 160ms ease,
     border-color 160ms ease,
-    transform 160ms ease;
+    transform 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .site-nav-button:hover {
   border-color: rgba(168, 63, 97, 0.34);
   background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 10px 24px rgba(87, 47, 61, 0.07);
   transform: translateY(-1px);
 }
 
@@ -1296,9 +1344,14 @@ a {
     padding: 0.55rem 0.65rem;
   }
 
+  .site-nav .site-nav-help {
+    width: 2.35rem;
+    height: 2.35rem;
+    padding: 0;
+  }
+
   .site-nav-cta,
-  .site-nav form,
-  .site-nav-button {
+  .site-nav form {
     width: 100%;
   }
 
@@ -1306,6 +1359,10 @@ a {
   .site-nav-button {
     justify-content: center;
     text-align: center;
+  }
+
+  .site-nav-button {
+    width: 100%;
   }
 
   .site-main {
