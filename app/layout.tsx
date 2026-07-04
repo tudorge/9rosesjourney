@@ -53,7 +53,8 @@ export default function RootLayout({
               <Link href="/readings">Readings</Link>
               <Link href="/astrocartography">Astrocartography</Link>
               <Link href="/about">About</Link>
-              <Link href="/join">Join the List</Link>
+              <Link href="/join">Join</Link>
+              <Link href="/schedule">Schedule a Reading</Link>
             </nav>
           </header>
 
