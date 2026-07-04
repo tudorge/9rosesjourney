@@ -17,8 +17,8 @@ export type CalendarSlot = {
 };
 
 export const SCHEDULING_TIMEZONE = "Europe/Bucharest";
-export const READING_DURATION_MINUTES = 120;
-export const BUFFER_MINUTES = 120;
+export const READING_DURATION_MINUTES = 75;
+export const BUFFER_MINUTES = 75;
 export const MINIMUM_NOTICE_HOURS = 48;
 export const BOOKING_WINDOW_DAYS = 30;
 export const MAX_READINGS_PER_DAY = 2;
