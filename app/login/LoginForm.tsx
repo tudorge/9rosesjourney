@@ -12,7 +12,7 @@ type SubmitState =
   | "social_redirecting"
   | "error";
 
-type SocialProvider = "google" | "apple" | "facebook";
+type SocialProvider = "google" | "facebook";
 
 type SocialProviderConfig = {
   provider: SocialProvider;
@@ -42,21 +42,6 @@ function GoogleIcon() {
       <path
         fill="#EA4335"
         d="M12 5.98c1.47 0 2.78.5 3.82 1.5l2.87-2.87A9.6 9.6 0 0 0 12 2a10 10 0 0 0-8.93 5.5l3.34 2.59C7.2 7.73 9.4 5.98 12 5.98Z"
-      />
-    </svg>
-  );
-}
-
-function AppleIcon() {
-  return (
-    <svg
-      className="login-provider-icon"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <path
-        fill="currentColor"
-        d="M16.39 13.02c-.02-2.18 1.78-3.23 1.86-3.28-1.02-1.49-2.6-1.7-3.16-1.72-1.35-.14-2.63.79-3.31.79-.69 0-1.75-.77-2.88-.75-1.48.02-2.85.86-3.61 2.18-1.54 2.67-.39 6.62 1.1 8.78.73 1.06 1.6 2.25 2.75 2.21 1.1-.04 1.52-.71 2.85-.71s1.71.71 2.88.69c1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.32-.89-2.35-3.57ZM14.2 6.6c.61-.74 1.02-1.77.91-2.8-.88.04-1.94.59-2.57 1.33-.56.65-1.06 1.7-.92 2.7.98.08 1.97-.5 2.58-1.23Z"
       />
     </svg>
   );
@@ -97,11 +82,6 @@ const socialProviders: SocialProviderConfig[] = [
     provider: "google",
     label: "Continue with Google",
     icon: <GoogleIcon />,
-  },
-  {
-    provider: "apple",
-    label: "Continue with Apple",
-    icon: <AppleIcon />,
   },
   {
     provider: "facebook",
