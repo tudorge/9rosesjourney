@@ -237,6 +237,10 @@ a {
   padding: 4rem 0;
 }
 
+.site-main.schedule-status-page {
+  width: min(1520px, calc(100% - 2rem));
+}
+
 .site-footer {
   display: flex;
   flex-direction: column;
@@ -943,29 +947,50 @@ a {
   text-transform: uppercase;
 }
 
-.schedule-status-page .schedule-status-hero,
+.schedule-status-page .schedule-status-hero {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: auto;
+}
+
 .schedule-status-page .schedule-status-panel {
-  width: min(900px, 100%);
-  max-width: 900px;
+  width: 100%;
+  max-width: none;
   margin-left: 0;
   margin-right: auto;
 }
 
 .schedule-status-hero {
-  min-height: 330px;
+  min-height: 300px;
 }
 
 .schedule-status-hero h1 {
-  max-width: 720px;
+  max-width: 980px;
 }
 
 .schedule-status-hero .hero-copy {
-  max-width: 520px;
+  max-width: 680px;
 }
 
 .schedule-status-panel {
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
   gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.schedule-status-panel-approved {
+  grid-template-columns: minmax(250px, 0.24fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1.25rem, 2.6vw, 2rem);
+}
+
+.schedule-status-panel-approved .request-summary-card {
+  position: sticky;
+  top: 1rem;
+}
+
+.schedule-status-panel-approved .scheduling-card {
+  min-width: 0;
 }
 
 .request-summary-card {
@@ -1228,54 +1253,102 @@ a {
 
 .scheduling-card {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
+}
+
+.scheduling-card h2 {
+  max-width: none;
+}
+
+.scheduling-card-heading {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.scheduling-card-heading .status-label,
+.scheduling-card-heading p {
+  margin: 0;
+}
+
+.scheduling-card-heading p:not(.status-label) {
+  max-width: 760px;
 }
 
 .scheduling-picker {
   display: grid;
-  gap: 1rem;
-  margin-top: 0.4rem;
+  gap: 1.1rem;
+  margin-top: 0.1rem;
+}
+
+.scheduling-picker-intro {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.scheduling-picker-intro .status-label,
+.scheduling-picker-intro .form-note {
+  margin: 0;
+}
+
+.scheduling-message-area:empty {
+  display: none;
 }
 
 .slot-day-list {
   display: grid;
-  gap: 0.9rem;
-  max-height: 32rem;
-  overflow: auto;
-  padding-right: 0.35rem;
+  grid-template-columns: repeat(auto-fit, minmax(20.5rem, 1fr));
+  gap: 1rem;
+  align-items: start;
 }
 
 .slot-day-card {
   display: grid;
-  gap: 0.75rem;
+  align-content: start;
+  gap: 0.85rem;
   padding: 1rem;
   border: 1px solid rgba(201, 154, 77, 0.3);
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.46);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.68),
+      rgba(255, 248, 241, 0.48)
+    ),
+    rgba(255, 255, 255, 0.46);
+  box-shadow: 0 12px 24px rgba(87, 47, 61, 0.06);
 }
 
 .slot-day-card h3 {
   margin: 0;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(201, 154, 77, 0.24);
   color: var(--foreground);
   font-size: 1rem;
   letter-spacing: -0.02em;
 }
 
 .slot-button-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
 }
 
 .slot-button {
-  min-height: 2.7rem;
+  min-height: 3.35rem;
+  width: 100%;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.25;
   border: 1px solid rgba(201, 154, 77, 0.48);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.76);
   color: var(--rose-dark);
-  padding: 0.7rem 0.9rem;
+  padding: 0.72rem 0.72rem;
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   font-weight: 800;
   cursor: pointer;
   transition:
@@ -1300,7 +1373,8 @@ a {
 @media (max-width: 900px) {
   .hero-section,
   .content-panel,
-  .schedule-status-panel {
+  .schedule-status-panel,
+  .schedule-status-panel-approved {
     grid-template-columns: 1fr;
   }
 
@@ -1311,6 +1385,10 @@ a {
   .schedule-status-page .schedule-status-hero,
   .schedule-status-page .schedule-status-panel {
     max-width: none;
+  }
+
+  .schedule-status-panel-approved .request-summary-card {
+    position: static;
   }
 
   .admin-decision-panel,
@@ -1492,6 +1570,18 @@ a {
 
   .join-form .primary-button,
   .request-form .primary-button {
+    width: 100%;
+  }
+
+  .slot-day-list {
+    grid-template-columns: 1fr;
+  }
+
+  .slot-button-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slot-button {
     width: 100%;
   }
 

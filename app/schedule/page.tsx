@@ -205,13 +205,17 @@ function RequestStatusPanel({ request }: { request: ReadingRequest }) {
 
   if (request.status === "approved_for_scheduling") {
     return (
-      <div className="status-card scheduling-card">
-        <h2>Choose your appointment time.</h2>
+      <div className="status-card scheduling-card scheduling-card-wide">
+        <div className="scheduling-card-heading">
+          <p className="status-label">Appointment Times</p>
 
-        <p>
-          Select one available time below. A Google Calendar invitation with the
-          Google Meet link will be sent after scheduling.
-        </p>
+          <h2>Choose your appointment time.</h2>
+
+          <p>
+            Select one available time below. A Google Calendar invitation with
+            the Google Meet link will be sent after scheduling.
+          </p>
+        </div>
 
         <SchedulingPicker />
       </div>
@@ -330,7 +334,13 @@ export default async function SchedulePage() {
           <p className="hero-copy">{statusHero.copy}</p>
         </section>
 
-        <section className="content-panel schedule-status-panel">
+        <section
+          className={`content-panel schedule-status-panel ${
+            request.status === "approved_for_scheduling"
+              ? "schedule-status-panel-approved"
+              : ""
+          }`}
+        >
           <div className="request-summary-card">
             <p className="eyebrow">Your Request</p>
 

@@ -51,12 +51,14 @@ export default function SchedulingPicker() {
 
   const [slots, setSlots] = useState<Slot[]>([]);
   const [timezone, setTimezone] = useState("");
+  const [readingDurationMinutes, setReadingDurationMinutes] = useState(75);
   const [loadState, setLoadState] = useState<LoadState>("loading");
   const [bookState, setBookState] = useState<BookState>("idle");
   const [selectedSlot, setSelectedSlot] = useState<Slot | null>(null);
   const [message, setMessage] = useState("");
 
   const groupedSlots = useMemo(() => groupSlotsByDate(slots), [slots]);
+  const visibleGroups = groupedSlots.slice(0, 10);
 
   useEffect(() => {
     let ignore = false;
@@ -79,6 +81,7 @@ export default function SchedulingPicker() {
         if (!ignore) {
           setSlots(result.slots ?? []);
           setTimezone(result.timezone ?? "");
+          setReadingDurationMinutes(result.readingDurationMinutes ?? 75);
           setLoadState("ready");
         }
       } catch (error) {
@@ -159,23 +162,26 @@ export default function SchedulingPicker() {
 
   return (
     <div className="scheduling-picker">
-      <div>
+      <div className="scheduling-picker-intro">
         <p className="status-label">Choose a time</p>
 
         <p className="form-note">
           Times are shown in Larisa&apos;s calendar timezone
-          {timezone ? `: ${timezone}` : ""}. Each reading is 2 hours, with
-          private preparation time around appointments.
+          {timezone ? `: ${timezone}` : ""}. Each reading is{" "}
+          {readingDurationMinutes} minutes, with private preparation time around
+          appointments.
         </p>
       </div>
 
-      {bookState === "booked" && (
-        <p className="form-message success-message">{message}</p>
-      )}
+      <div className="scheduling-message-area" aria-live="polite">
+        {bookState === "booked" && (
+          <p className="form-message success-message">{message}</p>
+        )}
 
-      {bookState === "error" && (
-        <p className="form-message error-message">{message}</p>
-      )}
+        {bookState === "error" && (
+          <p className="form-message error-message">{message}</p>
+        )}
+      </div>
 
       {slots.length === 0 && (
         <p className="form-note">
@@ -184,35 +190,40 @@ export default function SchedulingPicker() {
         </p>
       )}
 
-      <div className="slot-day-list">
-        {groupedSlots.slice(0, 10).map((group) => (
-          <div className="slot-day-card" key={group.label}>
-            <h3>{group.label}</h3>
+      {visibleGroups.length > 0 && (
+        <div className="slot-day-list" aria-label="Available appointment days">
+          {visibleGroups.map((group) => (
+            <div className="slot-day-card" key={group.label}>
+              <h3>{group.label}</h3>
 
-            <div className="slot-button-grid">
-              {group.slots.map((slot) => {
-                const isSelected =
-                  selectedSlot?.start === slot.start &&
-                  selectedSlot?.end === slot.end;
+              <div className="slot-button-grid">
+                {group.slots.map((slot) => {
+                  const isSelected =
+                    selectedSlot?.start === slot.start &&
+                    selectedSlot?.end === slot.end;
 
-                return (
-                  <button
-                    className="slot-button"
-                    type="button"
-                    key={`${slot.start}-${slot.end}`}
-                    onClick={() => bookSlot(slot)}
-                    disabled={bookState === "booking" || bookState === "booked"}
-                  >
-                    {bookState === "booking" && isSelected
-                      ? "Scheduling..."
-                      : slot.timeLabel}
-                  </button>
-                );
-              })}
+                  return (
+                    <button
+                      className="slot-button"
+                      type="button"
+                      key={`${slot.start}-${slot.end}`}
+                      onClick={() => bookSlot(slot)}
+                      disabled={
+                        bookState === "booking" || bookState === "booked"
+                      }
+                      aria-label={`Schedule for ${group.label}, ${slot.timeLabel}`}
+                    >
+                      {bookState === "booking" && isSelected
+                        ? "Scheduling..."
+                        : slot.timeLabel}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {groupedSlots.length > 10 && (
         <p className="form-note">
