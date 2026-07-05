@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Astrology Guidance & Personal Readings",
   description:
-    "Schedule a personal astrology reading with Larisa, including birth chart guidance, timing insight, astrocartography, and relocation astrology.",
+    "Request a personal astrology reading with Larisa, including birth chart guidance, timing insight, astrocartography, and relocation astrology.",
 };
 
 export default function ReadingsPage() {
@@ -13,7 +13,7 @@ export default function ReadingsPage() {
       <section className="page-hero">
         <p className="eyebrow">Personal Astrology Guidance</p>
 
-        <h1>Schedule a personal astrology reading with Larisa.</h1>
+        <h1>Request a personal astrology reading with Larisa.</h1>
 
         <p className="hero-copy">
           A one-on-one astrology reading for clarity, timing, reflection, birth
@@ -22,12 +22,36 @@ export default function ReadingsPage() {
         </p>
 
         <div className="hero-actions">
-          <Link href="/join" className="primary-button">
-            Get Notified When Booking Opens
+          <Link href="/schedule" className="primary-button">
+            Schedule a Reading
           </Link>
 
           <Link href="/astrocartography" className="secondary-button">
             Explore Astrocartography
+          </Link>
+        </div>
+      </section>
+
+      <section className="content-panel">
+        <div>
+          <p className="eyebrow">Beginning the Process</p>
+          <h2>Your reading begins with what you are ready to understand.</h2>
+        </div>
+
+        <p>
+          When you submit your request, Larisa receives your birth details and
+          the question or life area you would like to explore. She reviews each
+          request personally so the reading can be prepared with care before
+          scheduling is opened.
+        </p>
+
+        <div className="hero-actions">
+          <Link href="/schedule" className="primary-button">
+            Start Your Request
+          </Link>
+
+          <Link href="/about" className="secondary-button">
+            Learn About Larisa
           </Link>
         </div>
       </section>
@@ -37,9 +61,8 @@ export default function ReadingsPage() {
           <p className="card-kicker">Personal session</p>
           <h2>Birth Chart Reading</h2>
           <p>
-            A 60-minute personal reading focused on your natal chart, current
-            timing, life themes, questions, and areas where you are seeking
-            greater clarity.
+            A private reading focused on your natal chart, current timing, life
+            themes, questions, and areas where you are seeking greater clarity.
           </p>
         </article>
 
@@ -61,9 +84,9 @@ export default function ReadingsPage() {
           <p className="card-kicker">Prepared in advance</p>
           <h2>Birth Details</h2>
           <p>
-            When booking, you will be asked for your date of birth, time of
-            birth if known, place of birth, and the main question or life area
-            you would like the reading to focus on.
+            You will be asked for your date of birth, time of birth if known,
+            place of birth, and the main question or life area you would like
+            the reading to focus on.
           </p>
         </article>
       </section>
@@ -112,24 +135,27 @@ export default function ReadingsPage() {
 
       <section className="content-panel">
         <div>
-          <p className="eyebrow">Booking Status</p>
-          <h2>The reading calendar is being prepared.</h2>
+          <p className="eyebrow">Instagram</p>
+          <h2>Follow Larisa on Instagram.</h2>
         </div>
 
         <p>
-          Once scheduling is active, visitors will be able to choose an available
-          time, submit their birth details, and pay for the session at the time
-          of booking. Rescheduling will be available up to 24 hours before the
-          appointment.
+          For astrology reflections, updates, and new reading availability,
+          follow Larisa at 9rosesjourney.
         </p>
 
         <div className="hero-actions">
-          <Link href="/join" className="primary-button">
-            Get Notified When Booking Opens
-          </Link>
+          <a
+            href="https://www.instagram.com/9rosesjourney/"
+            className="primary-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Follow Larisa on Instagram
+          </a>
 
-          <Link href="/about" className="secondary-button">
-            Learn About Larisa
+          <Link href="/schedule" className="secondary-button">
+            Schedule a Reading
           </Link>
         </div>
       </section>

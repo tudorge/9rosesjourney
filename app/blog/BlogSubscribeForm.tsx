@@ -5,7 +5,7 @@ import type { FormEvent } from "react";
 
 type SubmitState = "idle" | "submitting" | "success" | "duplicate" | "error";
 
-export default function JoinForm() {
+export default function BlogSubscribeForm() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
@@ -32,6 +32,7 @@ export default function JoinForm() {
         body: JSON.stringify({
           email: trimmedEmail,
           firstName: trimmedFirstName,
+          source: "blog_subscribe",
         }),
       });
 
@@ -49,7 +50,7 @@ export default function JoinForm() {
 
       setSubmitState("error");
     } catch (error) {
-      console.error("Newsletter signup request failed:", error);
+      console.error("Blog subscription request failed:", error);
       setSubmitState("error");
     }
   }
@@ -57,9 +58,9 @@ export default function JoinForm() {
   return (
     <form className="join-form" onSubmit={handleSubmit}>
       <div className="form-field">
-        <label htmlFor="firstName">First name</label>
+        <label htmlFor="blogFirstName">First name</label>
         <input
-          id="firstName"
+          id="blogFirstName"
           name="firstName"
           type="text"
           value={firstName}
@@ -70,9 +71,9 @@ export default function JoinForm() {
       </div>
 
       <div className="form-field">
-        <label htmlFor="email">Email address</label>
+        <label htmlFor="blogEmail">Email address</label>
         <input
-          id="email"
+          id="blogEmail"
           name="email"
           type="email"
           value={email}
@@ -88,23 +89,23 @@ export default function JoinForm() {
         type="submit"
         disabled={submitState === "submitting"}
       >
-        {submitState === "submitting" ? "Joining..." : "Join the List"}
+        {submitState === "submitting" ? "Subscribing..." : "Subscribe"}
       </button>
 
       <p className="form-note">
-        No spam. Just thoughtful updates, reading announcements, and occasional
-        astrology reflections.
+        No spam. Just occasional astrology reflections, reading updates, and
+        notes from 9 Roses Journey.
       </p>
 
       {submitState === "success" && (
         <p className="form-message success-message">
-          You&apos;re on the list. Thank you for joining.
+          You&apos;re subscribed. Thank you for joining Larisa&apos;s notes.
         </p>
       )}
 
       {submitState === "duplicate" && (
         <p className="form-message success-message">
-          Looks like you&apos;re already signed up.
+          Looks like you&apos;re already subscribed.
         </p>
       )}
 

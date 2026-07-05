@@ -7,7 +7,7 @@ import SchedulingPicker from "./SchedulingPicker";
 export const metadata: Metadata = {
   title: "Schedule a Reading",
   description:
-    "Sign in and submit a private astrology reading request for Larisa to review.",
+    "Sign in to request a private astrology reading, check your request status, or view scheduling details for your reading with Larisa.",
 };
 
 type ReadingRequest = {
@@ -283,11 +283,12 @@ export default async function SchedulePage() {
         <section className="page-hero">
           <p className="eyebrow">Schedule a Reading</p>
 
-          <h1>Sign in to begin your reading request.</h1>
+          <h1>Sign in to continue.</h1>
 
           <p className="hero-copy">
-            First, sign in with your email or a trusted account. Then you can
-            submit your reading request for Larisa to review.
+            Use the same email or trusted account connected to your reading. You
+            can request a new reading, check your approval status, or view the
+            details for a scheduled appointment.
           </p>
 
           <div className="hero-actions">

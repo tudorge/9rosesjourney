@@ -81,10 +81,9 @@ export default async function RootLayout({
               <Link href="/">Home</Link>
               <Link href="/readings">Readings</Link>
               <Link href="/astrocartography">Astrocartography</Link>
+              <Link href="/blog">Blog</Link>
 
-              {isAdmin && (
-                <Link href="/admin/reading-requests">Admin</Link>
-              )}
+              {isAdmin && <Link href="/admin">Admin</Link>}
 
               {!user && (
                 <Link href="/login?next=/" className="site-nav-login">

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
+const allowedSources = new Set(["join_page", "blog_subscribe"]);
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -10,6 +12,13 @@ export async function POST(request: Request) {
 
     const firstName =
       typeof body.firstName === "string" ? body.firstName.trim() : "";
+
+    const requestedSource =
+      typeof body.source === "string" ? body.source.trim() : "";
+
+    const source = allowedSources.has(requestedSource)
+      ? requestedSource
+      : "join_page";
 
     if (!email) {
       return NextResponse.json(
@@ -23,7 +32,7 @@ export async function POST(request: Request) {
     const { error } = await supabase.from("newsletter_signups").insert({
       email,
       first_name: firstName || null,
-      source: "join_page",
+      source,
     });
 
     if (!error) {
